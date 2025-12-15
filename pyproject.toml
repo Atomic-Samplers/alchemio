@@ -1,0 +1,130 @@
+[build-system]
+requires = ["uv_build"] # Specify build system requirements
+build-backend = "uv_build" # Explicitly use uv_build as build backend
+
+[project]
+name = "template"
+description="The template package"
+version = "0.0.1"
+readme = "README.md"
+license = { text = "BSD-3" }
+authors = [{ name = "Your name", email = "your.email@example.com" }]
+keywords = ["template", "example", "package"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: Unix",
+    "Operating System :: MacOS",
+]
+requires-python = ">=3.10, <3.14"
+dependencies = [] # Add runtime dependencies here
+
+[tool.uv]
+package = true # Indicate that this is a package
+
+[project.optional-dependencies]
+docs = [
+    "mkdocs-material>=9.4.0",
+    "mkdocstrings-python>=2.0.0",
+    "mkdocs-gen-files>=0.5.0",
+    "mkdocs-literate-nav>=0.6.0",
+    "pillow>=10.0.0",
+    "cairosvg>=2.7.1"
+]
+tests = ["pytest", "pytest-cov"]
+dev = ["ruff", "black", "docformatter", "pyright", "pre-commit"] # Development dependencies
+
+[tool.pyright]
+enableExperimentalFeatures = true # Enable experimental features in Pyright
+include = ["src", "tests"] # Directories to include in type checking
+exclude = ["**/__pycache__"] # Exclude cache directories
+
+[tool.pytest.ini_options]
+minversion = "6.0" # Minimum pytest version required
+pythonpath = "src" # Specify the source directory for pytest to find modules
+testpaths = ["tests"] # Directory containing test files
+addopts = ["-p no:warnings", "--import-mode=importlib"] # Additional command-line options for pytest
+xfail_strict = true # Treat unexpected passes as failures
+
+[tool.black]
+extend-exclude = ''' # Extend the default exclude pattern to ignore virtual environments and build artifacts
+/(
+  \.venv
+  | venv
+  | \.egg-info
+  | build
+  | dist
+)/
+'''
+skip-magic-trailing-comma = true # Disable skipping of magic trailing commas
+
+[tool.ruff]
+src = ["src", "tests"] # Source directory to lint
+lint.select = [
+  "A",
+  "ARG",
+  "ASYNC",
+  "ASYNC1",
+  "B",
+  "C4",
+  "DTZ",
+  "E",
+  "EXE",
+  "F",
+  "FA",
+  "FLY",
+  "I",
+  "ICN",
+  "INT",
+  "ISC",
+  "LOG",
+  "NPY",
+  "PD",
+  "PERF",
+  "PIE",
+  "PL",
+  "PT",
+  "PTH",
+  "PYI",
+  "Q",
+  "RET",
+  "RSE",
+  "RUF",
+  "SIM",
+  "SLOT",
+  "T20",
+  "TCH",
+  "TID",
+  "UP",
+  "W",
+  "YTT",
+]
+lint.ignore = [
+  "E501",
+  "ISC001",
+  "PLR",
+  "PERF203",
+]
+lint.unfixable = [
+  "T20",
+  "F841",
+]
+lint.pydocstyle.convention = "numpy" # Use NumPy docstring style for pydocstyle checks
+lint.isort.known-first-party = ["template"] # First-party import for isort
+lint.isort.required-imports = ["from __future__ import annotations"] # Ensure future annotations import for python <= 3.14
+lint.isort.split-on-trailing-comma=false # Disable splitting on trailing commas for isort
+
+[tool.ruff.lint.per-file-ignores] # Per-file ignores for Ruff linting
+"__init__.py" = ["F401"] # Ignore unused imports in __init__.py files
+"tests/**" = ["ANN", "ARG", "D", "E402", "PTH", "S101"] # Ignore specific rules in test files
+
+[tool.docformatter] # Configuration for docformatter
+pre-summary-newline = true # Ensure a newline before the summary line
+black = true # Use Black-compatible formatting

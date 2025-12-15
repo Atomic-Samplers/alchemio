@@ -1,0 +1,25 @@
+name: type checking
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: set up python
+        run: uv python install 3.13
+
+      - name: install dependencies
+        run: uv sync --extra dev
+
+      - name: run pyright
+        run: uv run pyright

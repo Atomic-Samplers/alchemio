@@ -1,0 +1,39 @@
+name: docs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out repo
+        uses: actions/checkout@v5
+
+      - name: install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      - name: set up python
+        run: uv python install 3.13
+
+      - name: install dependencies
+        run: uv sync --extra docs
+
+      - name: build docs
+        run: uv run mkdocs build
+        id: build_docs
+
+      - name: rebuild and deploy docs
+        run: uv run mkdocs gh-deploy --force
+        if: github.ref == 'refs/heads/main' && steps.build_docs.outcome == 'success'
