@@ -548,11 +548,11 @@ class VaspIncar(TypedDict, total=False):
     PHON_SIGMA: float
     PHON_Tlist: list[float]
     PLEVEL: int
-    PLUGINS_FORCE_AND_STRESS = bool
-    PLUGINS_LOCAL_POTENTIAL = bool
-    PLUGINS_MACHINE_LEARNING = bool
-    PLUGINS_OCCUPANCIES = bool
-    PLUGINS_STRUCTURE = bool
+    PLUGINS_FORCE_AND_STRESS : bool
+    PLUGINS_LOCAL_POTENTIAL : bool
+    PLUGINS_MACHINE_LEARNING : bool
+    PLUGINS_OCCUPANCIES : bool
+    PLUGINS_STRUCTURE : bool
     PMASS: float
     POMASS: list[float]
     POTIM: float
