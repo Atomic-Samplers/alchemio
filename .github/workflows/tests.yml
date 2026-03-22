@@ -33,7 +33,7 @@ jobs:
         run: uv sync --extra tests
 
       - name: run tests with pytest
-        run: uv run pytest --cov=template --cov-report=xml
+        run: uv run pytest --cov=alchemio --cov-report=xml
 
       - name: upload coverage report as artifact
         uses: actions/upload-artifact@v5

@@ -3,27 +3,26 @@ requires = ["uv_build"] # Specify build system requirements
 build-backend = "uv_build" # Explicitly use uv_build as build backend
 
 [project]
-name = "template"
-description="The template package"
+name = "alchemio"
+description="`alchemio` is a package to perform IO operations between various computational chemistry formats."
 version = "0.0.1"
 readme = "README.md"
 license = { text = "BSD-3" }
-authors = [{ name = "Your name", email = "your.email@example.com" }]
-keywords = ["template", "example", "package"]
+authors = [{ name = "Tom Demeyere", email = "tom.dmre@gmail.com" }]
+keywords = ["Computational Chemistry", "Atomistic Simulations", "Input/Output"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Science/Research",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Topic :: Scientific/Engineering",
     "Operating System :: Microsoft :: Windows",
     "Operating System :: Unix",
     "Operating System :: MacOS",
 ]
-requires-python = ">=3.10, <3.14"
+requires-python = ">=3.12, <=3.14"
 dependencies = [] # Add runtime dependencies here
 
 [tool.uv]
@@ -117,7 +116,7 @@ lint.unfixable = [
   "F841",
 ]
 lint.pydocstyle.convention = "numpy" # Use NumPy docstring style for pydocstyle checks
-lint.isort.known-first-party = ["template"] # First-party import for isort
+lint.isort.known-first-party = ["alchemio"] # First-party import for isort
 lint.isort.required-imports = ["from __future__ import annotations"] # Ensure future annotations import for python <= 3.14
 lint.isort.split-on-trailing-comma=false # Disable splitting on trailing commas for isort
 
