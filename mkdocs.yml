@@ -1,7 +1,7 @@
-site_name: template
+site_name: alchemio
 site_author: Your Name
 site_description: >-
-  This is the `template` package!
+  This is the `alchemio` package!
 nav:
   - Home: index.md
   - Code Documentation: reference/ # keep me!
@@ -10,7 +10,7 @@ nav:
       - about/conduct.md
       - about/license.md
 
-repo_url: https://github.com/Atomic-Samplers/template/
+repo_url: https://github.com/Atomic-Samplers/alchemio/
 edit_uri: blob/main/docs/
 
 theme:
