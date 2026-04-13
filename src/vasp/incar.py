@@ -62,7 +62,8 @@ def read_incar(file_path: str) -> VaspIncar:
     block_key = None  # <-- new
     block_buffer = {}  # <-- new
 
-    with Path.open(file_path) as f:
+    path = Path(file_path)
+    with path.open() as f:
         for line in f:
             line_strip = line.rstrip("\n")
 
@@ -157,7 +158,8 @@ def format_value(value) -> str:
 
 
 def write_incar(incar: VaspIncar, filename: str):
-    with Path.open(filename, "w") as f:
+    path = Path(filename)
+    with path.open("w") as f:
         for key, value in incar.items():
             # Nested dict block (e.g. KERNEL_TRUNCATION_FACTOR)
             if isinstance(value, dict):
@@ -173,7 +175,3 @@ def write_incar(incar: VaspIncar, filename: str):
                 continue
 
             f.write(f"{key} = {format_value(value)}\n")
-
-
-incar = read_incar("INCAR")
-write_incar(incar, "pupu")
