@@ -3,8 +3,8 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-from alchemio.src.alchemio.vasp.types import VaspIncar
-from alchemio.src.alchemio.vasp.utils import clean_value, format_value
+from alchemio.vasp.types import VaspIncar
+from alchemio.vasp.utils import clean_value, format_value
 
 
 def read_incar(file_path: str) -> VaspIncar:
