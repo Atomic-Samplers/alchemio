@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-from alchemio.vasp.types import VaspIncar
+from alchemio.vasp.vasp_types import VaspIncar
 from alchemio.vasp.utils import clean_value, format_value
 
 
@@ -116,5 +116,6 @@ def write_incar(incar: VaspIncar, filename: str):
             if isinstance(value, str) and "\n" in value:
                 f.write(f'{key} = "{value}"\n')
                 continue
-
+            
             f.write(f"{key} = {format_value(value)}\n")
+

@@ -155,7 +155,7 @@ class VaspIncar(TypedDict, total=False):
     EMAX: float
     EMIN: float
     ENAUG: float
-    ENCUT: float
+    ENCUT: tuple
     ENCUTFOCK: float
     ENCUTGW: float
     ENCUTGWSOFT: float
