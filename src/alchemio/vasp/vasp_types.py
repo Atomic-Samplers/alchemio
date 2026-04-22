@@ -250,7 +250,7 @@ class VaspIncar(TypedDict, total=False):
     IVDW_NL: Literal[1, 2]
     IWAVPR: Literal[0, 1, 2, 3, 10, 11, 12, 13]
     KBLOCK: int
-    KERNEL_TRUNCATION_FACTOR: KernelDict
+    KERNEL_TRUNCATION: KernelDict
     KGAMMA: bool
     KPAR: int
     KPOINT_BSE: int | list[int]
