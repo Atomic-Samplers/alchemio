@@ -9,16 +9,16 @@ def test_read_incar() -> None:
     
     incar = read_incar("test_files/INCAR")
 
-    assert incar["ISTART"] == 1
-    assert incar["LREAL"] == False
-    assert incar["PREC"] == "Accurate"
-    assert incar["SIGMA"] == 0.05
-    assert incar["EDIFF"] == 1E-04
-    assert incar["ENCUT"] == (300.0, 'eV')
-    assert incar["WANNIER90_WIN"] == '"\n  Begin Projections\n  Si:sp3\n  End Projections\n  "'
+    assert incar.get("ISTART") == 1
+    assert incar.get("LREAL") == False
+    assert incar.get("PREC")== "Accurate"
+    assert incar.get("SIGMA") == 0.05
+    assert incar.get("EDIFF") == 1E-04
+    assert incar.get("ENCUT") == (300.0, 'eV')
+    assert incar.get("WANNIER90_WIN") == '"\n  Begin Projections\n  Si:sp3\n  End Projections\n  "'
 
-    assert incar["MAGMOM"] == [0, 0, 1.0, 0, 0, -1.0, 0, 0, 1.0, 0, 0, -1.0, 0, 0, 0, 0, 0, 0]
-    assert incar["KERNEL_TRUNCATION"] == {
+    assert incar.get("MAGMOM") == [0, 0, 1.0, 0, 0, -1.0, 0, 0, 1.0, 0, 0, -1.0, 0, 0, 0, 0, 0, 0]
+    assert incar.get("KERNEL_TRUNCATION") == {
     "LTRUNCATE"       : True,
     "IDIMENSIONALITY" : 2,
     "ISURFACE"        : 3,
@@ -49,7 +49,7 @@ def test_write_incar() -> None:
         "WANNIER90_WIN" : '"\n  Begin Projections\n  Si:sp3\n  End Projections\n  "'
 
     }
-    incar = VaspIncar(incar_dict)
+    incar = VaspIncar(**incar_dict)
     
     write_incar(incar,"test_files/incar_test.txt")
 
@@ -101,15 +101,15 @@ def test_vaspincar() -> None:
 
   }
   
-  incar = VaspIncar(incar_dict)
+  incar = VaspIncar(**incar_dict)
 
-  assert incar["ISTART"] == 1
-  assert incar["LREAL"] == False
-  assert incar["PREC"]== "Accurate"
-  assert incar["SIGMA"] == 0.05
-  assert incar["ENCUT"] == (300.0, 'eV')
-  assert incar["MAGMOM"] == [0, 0, 1.0, 0, 0, -1.0, 0, 0, 1.0, 0, 0, -1.0, 0, 0, 0, 0, 0, 0]
-  assert incar["KERNEL_TRUNCATION"] == {
+  assert incar.get("ISTART") == 1
+  assert incar.get("LREAL") == False
+  assert incar.get("PREC") == "Accurate"
+  assert incar.get("SIGMA") == 0.05
+  assert incar.get("ENCUT") == (300.0, 'eV')
+  assert incar.get("MAGMOM") == [0, 0, 1.0, 0, 0, -1.0, 0, 0, 1.0, 0, 0, -1.0, 0, 0, 0, 0, 0, 0]
+  assert incar.get("KERNEL_TRUNCATION") == {
       "LTRUNCATE"       : True,
       "IDIMENSIONALITY" : 2,
       "ISURFACE"        : 3,
