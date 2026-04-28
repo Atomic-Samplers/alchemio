@@ -1,6 +1,6 @@
 Global Parameters
-ISTART =  1            (Read existing wavefunction, if there)
-ISPIN  =  1            (Non-Spin polarised DFT)
+istart =  1            (Read existing wavefunction, if there)
+ispin  =  1            (Non-Spin polarised DFT)
 # ICHARG =  11         (Non-self-consistent: GGA/LDA band structures)
 LREAL  = .FALSE.       (Projection operators: automatic)
 # ENCUT  =  400        (Cut-off energy for plane wave basis set, in eV)
@@ -37,7 +37,7 @@ EDIFFG = -5E-02        (Ionic convergence, eV/AA)
 ISYM =  2            (Symmetry: 0=none, 2=GGA, 3=hybrids)
 ENCUT  = 300.00 eV
 POTIM = 0.2  
-WANNIER90_WIN = "
+wannier90_win = "
   Begin Projections
   Si:sp3
   End Projections
@@ -47,7 +47,7 @@ MAGMOM  = 0 0 1.0 0 0 -1.0 \
             6*0 
 ISMEAR= -1 ;  SIGMA = 0.05
 
-KERNEL_TRUNCATION {
+kerNel_TRUNCATION {
      LTRUNCATE       = T
      IDIMENSIONALITY = 2
      ISURFACE        = 3
